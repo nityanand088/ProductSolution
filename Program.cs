@@ -37,10 +37,6 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddScoped<ProductBL>();
 builder.Services.AddScoped<JwtService>();
 
-// Fluent Validation (Enable if using)
-// builder.Services.AddValidatorsFromAssemblyContaining<ProductValidator>();
-// builder.Services.AddFluentValidationAutoValidation();
-
 // JWT Authentication
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>

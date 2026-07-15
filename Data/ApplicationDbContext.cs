@@ -13,6 +13,5 @@ public class ApplicationDbContext : DbContext
 
     public DbSet<Product> Products { get; set; }
     public DbSet<RefreshToken> RefreshTokens { get; set; }
-    //public DbSet<RefreshToken> RefreshTokenRequest { get; set; }
 
 }

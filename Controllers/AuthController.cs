@@ -1,16 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProductSolution.Authentication;
-
-namespace ProductSolution.Controllers;
-
 using Azure.Core;
 using Microsoft.AspNetCore.Authorization;
 using ProductSolution.DAL.Data;
 using ProductSolution.DTO;
 using ProductSolution.Model;
 
-//using ProductSolution.Data;
-//using ProductSolution.Model;
+namespace ProductSolution.Controllers;
 
 //[Authorize]
 [Route("api/[controller]")]
@@ -23,7 +19,6 @@ public class AuthController : ControllerBase
     //{
     //    _jwtService = jwtService;
     //}
-
     private readonly JwtService _jwtService;
     private readonly ApplicationDbContext _context;
 

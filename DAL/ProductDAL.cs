@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-//using ProductApi.DAL.Data;
 using ProductApi.DAL.Models;
 using ProductSolution.DAL.Data;
 

@@ -174,3 +174,4 @@ C:\Users\LAPTOP WORLD\source\repos\ProductSolution\ProductSolution\obj\Debug\net
 C:\Users\LAPTOP WORLD\source\repos\ProductSolution\ProductSolution\obj\Debug\net10.0\ProductSolution.pdb
 C:\Users\LAPTOP WORLD\source\repos\ProductSolution\ProductSolution\obj\Debug\net10.0\ProductSolution.genruntimeconfig.cache
 C:\Users\LAPTOP WORLD\source\repos\ProductSolution\ProductSolution\obj\Debug\net10.0\ref\ProductSolution.dll
+C:\Users\LAPTOP WORLD\source\repos\ProductSolution\ProductSolution\obj\Debug\net10.0\ProductSolution.sourcelink.json
