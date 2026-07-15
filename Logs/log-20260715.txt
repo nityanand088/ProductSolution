@@ -1,0 +1,254 @@
+2026-07-15 00:15:26.564 +05:30 [INF] Executed DbCommand (26ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-07-15 00:15:26.625 +05:30 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2026-07-15 00:15:26.654 +05:30 [INF] Executed DbCommand (26ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result
+2026-07-15 00:15:26.769 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;
+2026-07-15 00:15:26.781 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-07-15 00:15:26.782 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2026-07-15 00:15:26.787 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2026-07-15 00:15:26.798 +05:30 [INF] Applying migration '20260714133400_InitialCreate'.
+2026-07-15 00:15:26.817 +05:30 [ERR] Failed executing DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Product] (
+    [Id] int NOT NULL IDENTITY,
+    [ProductName] nvarchar(max) NULL,
+    [CreatedBy] nvarchar(max) NULL,
+    [CreatedOn] datetime2 NOT NULL,
+    [ModifiedBy] nvarchar(max) NULL,
+    [ModifiedOn] datetime2 NULL,
+    CONSTRAINT [PK_Product] PRIMARY KEY ([Id])
+);
+2026-07-15 00:21:15.244 +05:30 [INF] Executed DbCommand (171ms) [Parameters=[], CommandType='"Text"', CommandTimeout='60']
+CREATE DATABASE [ProductDB];
+2026-07-15 00:21:15.344 +05:30 [INF] Executed DbCommand (54ms) [Parameters=[], CommandType='"Text"', CommandTimeout='60']
+IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [ProductDB] SET READ_COMMITTED_SNAPSHOT ON;
+END;
+2026-07-15 00:21:15.368 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-07-15 00:21:15.372 +05:30 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2026-07-15 00:21:15.394 +05:30 [INF] Executed DbCommand (19ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result
+2026-07-15 00:21:15.491 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;
+2026-07-15 00:21:15.503 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-07-15 00:21:15.503 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2026-07-15 00:21:15.515 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2026-07-15 00:21:15.528 +05:30 [INF] Applying migration '20260714185054_InitialCreate'.
+2026-07-15 00:21:15.544 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Products] (
+    [Id] int NOT NULL IDENTITY,
+    [ProductName] nvarchar(max) NULL,
+    [CreatedBy] nvarchar(max) NULL,
+    [CreatedOn] datetime2 NOT NULL,
+    [ModifiedBy] nvarchar(max) NULL,
+    [ModifiedOn] datetime2 NULL,
+    CONSTRAINT [PK_Products] PRIMARY KEY ([Id])
+);
+2026-07-15 00:21:15.546 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [RefreshTokens] (
+    [Id] int NOT NULL IDENTITY,
+    [Username] nvarchar(max) NOT NULL,
+    [Token] nvarchar(max) NOT NULL,
+    [ExpiryDate] datetime2 NOT NULL,
+    CONSTRAINT [PK_RefreshTokens] PRIMARY KEY ([Id])
+);
+2026-07-15 00:21:15.549 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20260714185054_InitialCreate', N'10.0.9');
+2026-07-15 00:21:15.553 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result
+2026-07-15 00:34:31.421 +05:30 [INF] User profile is available. Using 'C:\Users\LAPTOP WORLD\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-07-15 00:34:31.744 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44331/swagger/index.html - null null
+2026-07-15 00:34:32.059 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44331/swagger/index.html - 304 null null 328.5436ms
+2026-07-15 00:34:32.123 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44331/swagger/index.css - null null
+2026-07-15 00:34:32.123 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44331/swagger/swagger-ui-bundle.js - null null
+2026-07-15 00:34:32.123 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44331/swagger/index.js - null null
+2026-07-15 00:34:32.123 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44331/swagger/swagger-ui-standalone-preset.js - null null
+2026-07-15 00:34:32.123 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44331/_framework/aspnetcore-browser-refresh.js - null null
+2026-07-15 00:34:32.123 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44331/swagger/swagger-ui.css - null null
+2026-07-15 00:34:32.127 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44331/swagger/index.js - 304 null null 6.991ms
+2026-07-15 00:34:32.175 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44331/swagger/swagger-ui-bundle.js - 304 null null 54.7822ms
+2026-07-15 00:34:32.175 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44331/swagger/index.css - 304 null null 54.7946ms
+2026-07-15 00:34:32.175 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44331/swagger/swagger-ui.css - 304 null null 54.8023ms
+2026-07-15 00:34:32.175 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44331/swagger/swagger-ui-standalone-preset.js - 304 null null 53.8066ms
+2026-07-15 00:34:32.183 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44331/_framework/aspnetcore-browser-refresh.js - 200 14935 application/javascript; charset=utf-8 62.1929ms
+2026-07-15 00:34:32.185 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44331/_vs/browserLink - null null
+2026-07-15 00:34:32.232 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44331/_vs/browserLink - 200 null text/javascript; charset=UTF-8 46.3795ms
+2026-07-15 00:34:32.279 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44331/swagger/v1/swagger.json - null null
+2026-07-15 00:34:32.292 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44331/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 13.1926ms
+2026-07-15 00:34:39.637 +05:30 [INF] Request starting HTTP/1.1 POST https://localhost:44331/api/Auth/Login - application/json 55
+2026-07-15 00:34:39.769 +05:30 [INF] Executing endpoint 'ProductSolution.Controllers.AuthController.Login (ProductSolution)'
+2026-07-15 00:34:39.797 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(ProductSolution.Authentication.LoginModel) on controller ProductSolution.Controllers.AuthController (ProductSolution).
+2026-07-15 00:34:41.611 +05:30 [INF] Executed DbCommand (72ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (Size = 4000), @p2='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [RefreshTokens] ([ExpiryDate], [Token], [Username])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2);
+2026-07-15 00:34:41.682 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`2[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-07-15 00:34:41.694 +05:30 [INF] Executed action ProductSolution.Controllers.AuthController.Login (ProductSolution) in 1890.8819ms
+2026-07-15 00:34:41.695 +05:30 [INF] Executed endpoint 'ProductSolution.Controllers.AuthController.Login (ProductSolution)'
+2026-07-15 00:34:41.712 +05:30 [INF] Request finished HTTP/1.1 POST https://localhost:44331/api/Auth/Login - 200 null application/json; charset=utf-8 2075.2361ms
+2026-07-15 00:34:46.319 +05:30 [INF] Request starting HTTP/1.1 POST https://localhost:44331/api/Auth/Login - application/json 55
+2026-07-15 00:34:46.322 +05:30 [INF] Executing endpoint 'ProductSolution.Controllers.AuthController.Login (ProductSolution)'
+2026-07-15 00:34:46.323 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(ProductSolution.Authentication.LoginModel) on controller ProductSolution.Controllers.AuthController (ProductSolution).
+2026-07-15 00:34:46.421 +05:30 [INF] Executed DbCommand (11ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (Size = 4000), @p2='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [RefreshTokens] ([ExpiryDate], [Token], [Username])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2);
+2026-07-15 00:34:46.423 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`2[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-07-15 00:34:46.425 +05:30 [INF] Executed action ProductSolution.Controllers.AuthController.Login (ProductSolution) in 101.8191ms
+2026-07-15 00:34:46.425 +05:30 [INF] Executed endpoint 'ProductSolution.Controllers.AuthController.Login (ProductSolution)'
+2026-07-15 00:34:46.425 +05:30 [INF] Request finished HTTP/1.1 POST https://localhost:44331/api/Auth/Login - 200 null application/json; charset=utf-8 106.3394ms
+2026-07-15 00:34:47.842 +05:30 [INF] Request starting HTTP/1.1 POST https://localhost:44331/api/Auth/Login - application/json 55
+2026-07-15 00:34:47.848 +05:30 [INF] Executing endpoint 'ProductSolution.Controllers.AuthController.Login (ProductSolution)'
+2026-07-15 00:34:47.848 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(ProductSolution.Authentication.LoginModel) on controller ProductSolution.Controllers.AuthController (ProductSolution).
+2026-07-15 00:34:47.876 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (Size = 4000), @p2='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [RefreshTokens] ([ExpiryDate], [Token], [Username])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2);
+2026-07-15 00:34:47.877 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`2[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-07-15 00:34:47.879 +05:30 [INF] Executed action ProductSolution.Controllers.AuthController.Login (ProductSolution) in 30.1033ms
+2026-07-15 00:34:47.879 +05:30 [INF] Executed endpoint 'ProductSolution.Controllers.AuthController.Login (ProductSolution)'
+2026-07-15 00:34:47.879 +05:30 [INF] Request finished HTTP/1.1 POST https://localhost:44331/api/Auth/Login - 200 null application/json; charset=utf-8 37.0876ms
+2026-07-15 00:35:10.602 +05:30 [INF] Request starting HTTP/1.1 POST https://localhost:44331/api/Auth/RefreshToken - application/json 55
+2026-07-15 00:35:10.606 +05:30 [INF] Request finished HTTP/1.1 POST https://localhost:44331/api/Auth/RefreshToken - 404 null null 3.9774ms
+2026-07-15 00:35:10.608 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: POST https://localhost:44331/api/Auth/RefreshToken, Response status code: 404
+2026-07-15 00:35:55.079 +05:30 [INF] Request starting HTTP/1.1 POST https://localhost:44331/api/Auth/Login - application/json 55
+2026-07-15 00:35:55.080 +05:30 [INF] Executing endpoint 'ProductSolution.Controllers.AuthController.Login (ProductSolution)'
+2026-07-15 00:35:55.080 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(ProductSolution.Authentication.LoginModel) on controller ProductSolution.Controllers.AuthController (ProductSolution).
+2026-07-15 00:35:55.094 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (Size = 4000), @p2='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [RefreshTokens] ([ExpiryDate], [Token], [Username])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2);
+2026-07-15 00:35:55.095 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`2[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-07-15 00:35:55.096 +05:30 [INF] Executed action ProductSolution.Controllers.AuthController.Login (ProductSolution) in 15.0621ms
+2026-07-15 00:35:55.096 +05:30 [INF] Executed endpoint 'ProductSolution.Controllers.AuthController.Login (ProductSolution)'
+2026-07-15 00:35:55.096 +05:30 [INF] Request finished HTTP/1.1 POST https://localhost:44331/api/Auth/Login - 200 null application/json; charset=utf-8 17.3028ms
+2026-07-15 00:36:52.005 +05:30 [INF] Request starting HTTP/1.1 POST https://localhost:44331/api/Auth/RefreshToken - application/json 62
+2026-07-15 00:36:52.007 +05:30 [INF] Request finished HTTP/1.1 POST https://localhost:44331/api/Auth/RefreshToken - 404 null null 2.2929ms
+2026-07-15 00:36:52.007 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: POST https://localhost:44331/api/Auth/RefreshToken, Response status code: 404
+2026-07-15 00:42:21.994 +05:30 [INF] User profile is available. Using 'C:\Users\LAPTOP WORLD\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-07-15 00:42:22.280 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44331/swagger/index.html - null null
+2026-07-15 00:42:22.616 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44331/swagger/index.html - 304 null null 350.8187ms
+2026-07-15 00:42:22.656 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44331/swagger/index.css - null null
+2026-07-15 00:42:22.656 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44331/_framework/aspnetcore-browser-refresh.js - null null
+2026-07-15 00:42:22.656 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44331/_vs/browserLink - null null
+2026-07-15 00:42:22.656 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44331/swagger/swagger-ui-bundle.js - null null
+2026-07-15 00:42:22.656 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44331/swagger/swagger-ui-standalone-preset.js - null null
+2026-07-15 00:42:22.657 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44331/swagger/swagger-ui.css - null null
+2026-07-15 00:42:22.681 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44331/swagger/index.js - null null
+2026-07-15 00:42:22.689 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44331/swagger/index.js - 304 null null 7.7702ms
+2026-07-15 00:42:22.710 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44331/swagger/swagger-ui-standalone-preset.js - 304 null null 55.4875ms
+2026-07-15 00:42:22.710 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44331/swagger/swagger-ui.css - 304 null null 53.752ms
+2026-07-15 00:42:22.710 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44331/swagger/index.css - 304 null null 60.5775ms
+2026-07-15 00:42:22.710 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44331/swagger/swagger-ui-bundle.js - 304 null null 60.7645ms
+2026-07-15 00:42:22.720 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44331/_framework/aspnetcore-browser-refresh.js - 200 14935 application/javascript; charset=utf-8 69.4965ms
+2026-07-15 00:42:22.739 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44331/_vs/browserLink - 200 null text/javascript; charset=UTF-8 89.5871ms
+2026-07-15 00:42:22.813 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44331/swagger/v1/swagger.json - null null
+2026-07-15 00:42:22.829 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44331/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 15.8793ms
+2026-07-15 00:42:32.150 +05:30 [INF] Request starting HTTP/1.1 POST https://localhost:44331/api/Auth/RefreshToken - application/json 62
+2026-07-15 00:42:32.217 +05:30 [INF] Executing endpoint 'ProductSolution.Controllers.AuthController.RefreshToken (ProductSolution)'
+2026-07-15 00:42:32.241 +05:30 [INF] Route matched with {action = "RefreshToken", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult RefreshToken(ProductSolution.DTO.RefreshTokenRequest) on controller ProductSolution.Controllers.AuthController (ProductSolution).
+2026-07-15 00:42:34.134 +05:30 [INF] Executed DbCommand (81ms) [Parameters=[@request_RefreshToken='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ExpiryDate], [r].[Token], [r].[Username]
+FROM [RefreshTokens] AS [r]
+WHERE [r].[Token] = @request_RefreshToken
+2026-07-15 00:42:34.455 +05:30 [INF] Executed DbCommand (19ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (DbType = DateTime2), @p1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [RefreshTokens] SET [ExpiryDate] = @p0, [Token] = @p1
+OUTPUT 1
+WHERE [Id] = @p2;
+2026-07-15 00:42:34.474 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`2[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-07-15 00:42:34.485 +05:30 [INF] Executed action ProductSolution.Controllers.AuthController.RefreshToken (ProductSolution) in 2237.8356ms
+2026-07-15 00:42:34.485 +05:30 [INF] Executed endpoint 'ProductSolution.Controllers.AuthController.RefreshToken (ProductSolution)'
+2026-07-15 00:42:34.499 +05:30 [INF] Request finished HTTP/1.1 POST https://localhost:44331/api/Auth/RefreshToken - 200 null application/json; charset=utf-8 2348.9875ms
+2026-07-15 18:29:24.097 +05:30 [INF] User profile is available. Using 'C:\Users\LAPTOP WORLD\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-07-15 18:29:24.399 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44331/swagger/index.html - null null
+2026-07-15 18:29:24.715 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44331/swagger/index.html - 304 null null 324.7578ms
+2026-07-15 18:29:24.797 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44331/swagger/swagger-ui-bundle.js - null null
+2026-07-15 18:29:24.797 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44331/swagger/swagger-ui.css - null null
+2026-07-15 18:29:24.797 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44331/swagger/swagger-ui-standalone-preset.js - null null
+2026-07-15 18:29:24.797 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44331/swagger/index.css - null null
+2026-07-15 18:29:24.797 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44331/_framework/aspnetcore-browser-refresh.js - null null
+2026-07-15 18:29:24.798 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44331/swagger/index.js - null null
+2026-07-15 18:29:24.827 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44331/_vs/browserLink - null null
+2026-07-15 18:29:24.832 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44331/swagger/index.js - 304 null null 33.9636ms
+2026-07-15 18:29:24.851 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44331/swagger/swagger-ui-standalone-preset.js - 304 null null 87.1277ms
+2026-07-15 18:29:24.852 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44331/swagger/swagger-ui-bundle.js - 304 null null 54.9219ms
+2026-07-15 18:29:24.851 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44331/swagger/swagger-ui.css - 304 null null 88.2766ms
+2026-07-15 18:29:24.852 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44331/swagger/index.css - 304 null null 88.4988ms
+2026-07-15 18:29:24.861 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44331/_framework/aspnetcore-browser-refresh.js - 200 14935 application/javascript; charset=utf-8 64.7756ms
+2026-07-15 18:29:24.912 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44331/_vs/browserLink - 200 null text/javascript; charset=UTF-8 85.0656ms
+2026-07-15 18:29:24.959 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44331/swagger/v1/swagger.json - null null
+2026-07-15 18:29:24.973 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44331/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 14.2612ms
+2026-07-15 18:29:47.368 +05:30 [INF] Request starting HTTP/2 POST https://localhost:44331/api/Auth/Login - application/json 55
+2026-07-15 18:29:47.473 +05:30 [INF] Executing endpoint 'ProductSolution.Controllers.AuthController.Login (ProductSolution)'
+2026-07-15 18:29:47.500 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(ProductSolution.Authentication.LoginModel) on controller ProductSolution.Controllers.AuthController (ProductSolution).
+2026-07-15 18:29:49.257 +05:30 [INF] Executed DbCommand (94ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (Size = 4000), @p2='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [RefreshTokens] ([ExpiryDate], [Token], [Username])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2);
+2026-07-15 18:29:49.316 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`2[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-07-15 18:29:49.326 +05:30 [INF] Executed action ProductSolution.Controllers.AuthController.Login (ProductSolution) in 1820.7834ms
+2026-07-15 18:29:49.327 +05:30 [INF] Executed endpoint 'ProductSolution.Controllers.AuthController.Login (ProductSolution)'
+2026-07-15 18:29:49.340 +05:30 [INF] Request finished HTTP/2 POST https://localhost:44331/api/Auth/Login - 200 null application/json; charset=utf-8 1972.5509ms
+2026-07-15 18:30:04.171 +05:30 [INF] Request starting HTTP/2 POST https://localhost:44331/api/Auth/RefreshToken - application/json 62
+2026-07-15 18:30:04.175 +05:30 [INF] Executing endpoint 'ProductSolution.Controllers.AuthController.RefreshToken (ProductSolution)'
+2026-07-15 18:30:04.202 +05:30 [INF] Route matched with {action = "RefreshToken", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult RefreshToken(ProductSolution.DTO.RefreshTokenRequest) on controller ProductSolution.Controllers.AuthController (ProductSolution).
+2026-07-15 18:30:04.754 +05:30 [INF] Executed DbCommand (13ms) [Parameters=[@request_RefreshToken='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ExpiryDate], [r].[Token], [r].[Username]
+FROM [RefreshTokens] AS [r]
+WHERE [r].[Token] = @request_RefreshToken
+2026-07-15 18:30:04.787 +05:30 [INF] Executed DbCommand (13ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (DbType = DateTime2), @p1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [RefreshTokens] SET [ExpiryDate] = @p0, [Token] = @p1
+OUTPUT 1
+WHERE [Id] = @p2;
+2026-07-15 18:30:04.789 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`2[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-07-15 18:30:04.791 +05:30 [INF] Executed action ProductSolution.Controllers.AuthController.RefreshToken (ProductSolution) in 587.9055ms
+2026-07-15 18:30:04.791 +05:30 [INF] Executed endpoint 'ProductSolution.Controllers.AuthController.RefreshToken (ProductSolution)'
+2026-07-15 18:30:04.792 +05:30 [INF] Request finished HTTP/2 POST https://localhost:44331/api/Auth/RefreshToken - 200 null application/json; charset=utf-8 621.6754ms
