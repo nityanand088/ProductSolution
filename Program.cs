@@ -2,14 +2,16 @@ using FluentValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using ProductSolution.DAL.Data;
 using ProductSolution.Authentication;
 using ProductSolution.BL;
 using ProductSolution.DAL;
+using ProductSolution.DAL.Data;
 using ProductSolution.Middleware;
+using ProductSolution.Model;
 using ProductSolution.Validators;
 using Serilog;
 using System.Text;
+using System.Text.Json.Serialization;
 
 // Configure Serilog
 Log.Logger = new LoggerConfiguration()
@@ -22,7 +24,14 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Host.UseSerilog();
 
 // Add Controllers
-builder.Services.AddControllers();
+//builder.Services.AddControllers();
+
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler =
+            System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
+    });
 
 // Swagger
 builder.Services.AddEndpointsApiExplorer();
@@ -36,6 +45,9 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 // Dependency Injection
 builder.Services.AddScoped<ProductBL>();
 builder.Services.AddScoped<JwtService>();
+
+builder.Services.AddScoped<ItemBL>();
+builder.Services.AddScoped<ItemDAL>();
 
 // JWT Authentication
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

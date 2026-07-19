@@ -10,8 +10,8 @@ public class ApplicationDbContext : DbContext
         : base(options)
     {
     }
-
     public DbSet<Product> Products { get; set; }
+    public DbSet<Item> Items { get; set; }
     public DbSet<RefreshToken> RefreshTokens { get; set; }
 
 }

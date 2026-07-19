@@ -1,4 +1,7 @@
-﻿namespace ProductApi.DAL.Models;
+﻿using ProductSolution.Model;
+using System.Collections.Generic;
+
+namespace ProductApi.DAL.Models;
 
 public class Product
 {
@@ -13,4 +16,6 @@ public class Product
     public string? ModifiedBy { get; set; }
 
     public DateTime? ModifiedOn { get; set; }
+
+    public ICollection<Item>? Items { get; set; }
 }
